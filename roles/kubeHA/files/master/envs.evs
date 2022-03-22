@@ -1,0 +1,14 @@
+export STATE=MASTER
+export INTERFACE=eth1
+export ROUTER_ID=51
+export PRIORITY=101
+export AUTH_PASS=42
+export APISERVER_SRC_PORT=6443
+export APISERVER_DEST_PORT=8443
+export APISERVER_VIP=10.0.0.9/24
+export HOST1_ID=master-node01
+export HOST1_ADDRESS=10.0.0.10
+export HOST2_ID=master-node02
+export HOST2_ADDRESS=10.0.0.11
+export HOST3_ID=master-node03
+export HOST3_ADDRESS=10.0.0.12

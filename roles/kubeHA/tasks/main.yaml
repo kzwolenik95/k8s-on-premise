@@ -1,0 +1,32 @@
+- name: Copy keepalived and haproxy conf files - master
+  become: no
+  copy:
+    src: "{{item}}"
+    dest: /home/vagrant/HAconf/
+  with_fileglob:
+    - master/*
+  when: inventory_hostname == "10.0.0.10"
+
+- name: Copy keepalived and haproxy conf files - common
+  become: no
+  copy:
+    src: "{{item}}"
+    dest: /home/vagrant/HAconf/
+  with_fileglob:
+    - common/*
+
+- name: Copy keepalived and haproxy conf files - backup
+  become: no
+  copy:
+    src: "{{item}}"
+    dest: /home/vagrant/HAconf/
+  with_fileglob:
+    - backup/*
+  when: inventory_hostname == "10.0.0.11" or inventory_hostname == "10.0.0.12"
+
+- name: Create keepalived and haproxy static pods config files
+  shell: |
+    cd HAconf && source envs.evs && chmod +x prepare_confs.sh && ./prepare_confs.sh
+  args:
+    executable: /bin/bash
+  when: inventory_hostname in groups["master"]

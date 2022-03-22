@@ -25,5 +25,10 @@
   roles:
     - kubernetes
 
-
+- name: Setup HA
+  hosts: all
+  remote_user: "{{ user }}"
+  become: true
+  roles:
+    - kubeHA
   
