@@ -1,0 +1,21 @@
+---
+- name: Prepare servers for K8s cluster
+  hosts: all
+  remote_user: "{{ user }}"
+  become: yes
+
+  pre_tasks:
+  - name: Update and upgrade apt packages
+    apt: 
+      update_cache: yes
+      cache_valid_time: 3600
+      upgrade: dist
+
+- name: Install docker
+  hosts: all
+  remote_user: "{{ user }}"
+  become: true
+  roles:
+    - docker
+
+  
