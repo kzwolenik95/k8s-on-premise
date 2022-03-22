@@ -14,6 +14,7 @@
     dest: /home/vagrant/HAconf/
   with_fileglob:
     - common/*
+  when: inventory_hostname in groups["master"]
 
 - name: Copy keepalived and haproxy conf files - backup
   become: no
