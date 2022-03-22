@@ -6,7 +6,6 @@ Vagrant.configure("2") do |config|
 
   # add host names
   config.vm.provision "shell", inline: <<-SHELL
-    apt-get update -y
     echo "10.0.0.10  master-node01" >> /etc/hosts
     echo "10.0.0.11  master-node02" >> /etc/hosts
     echo "10.0.0.12  master-node03" >> /etc/hosts

@@ -1,15 +1,13 @@
 ---
 - name: Install docker dependencies
   apt:
-    name: "{{ packages }}"
+    pkg:
+      - ca-certificates
+      - curl
+      - gnupg
+      - lsb-release
     state: present
     update_cache: yes
-  vars:
-    packages:
-    - ca-certificates
-    - curl
-    - gnupg
-    - lsb-release
 
 - name: Add official Docker GPG key
   apt_key:
