@@ -18,4 +18,11 @@
   roles:
     - docker
 
+- name: Install kubernetes
+  hosts: all
+  remote_user: "{{ user }}"
+  become: true
+  roles:
+    - kubernetes
+
   
